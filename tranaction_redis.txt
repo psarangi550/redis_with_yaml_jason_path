@@ -1,0 +1,100 @@
+hget color green blue
+hget color green 
+hget color bluew 
+hget color blue
+clear
+hmget color blue green
+flushall
+lpush val 10 20 30
+lrange val 0 -1
+flushall
+clear
+rpush 10 20 30
+lrange 10 0 -1
+clear
+flushall
+sadd user_ip 10.0.0.1 10.0.0.2 10.0.0.3 
+expire 200 
+expire user_ip 200 
+scard user_ip
+smembers user_ip
+sismember user_ip "10.0.0.3"
+sismember user_ip 10.0.0.3
+clear
+sismember user_ip 10.0.0.4
+spop user_ip
+smembers user_ip
+sadd client_ip 10.0.0.2, 10.0.0.4,10.0.0.5
+sdiff user_ip client_ip
+sdiff  client_ip user_ip
+spop client_ip 2
+clear
+srem user_ip "10.0.0.1"
+smembers users_ip 
+smembers user_ip 
+clear
+keys *
+srem user_ip "10.0.0.2"
+smembers user_ip
+keys *
+sadd user_ip 10.0.0.2, 10.0.0.4 10.0.0.5
+srem user_ip 10.0.0.2 10.0.0.4
+smembers user_ip
+srem user_ip "10.0.0.2" "10.0.0.5"
+smembers user_ip
+spop user_ip
+clear
+keys *
+flush all
+flushall
+clear
+exit
+clear
+set ticket 6
+multi
+get ticket
+incr ticket
+get ticket
+exec
+clear
+keys *
+multi
+get ticket
+increment ticket
+decr ricket
+get ticket
+exec
+clear
+get ticket
+clear
+multi
+get ticket
+decr ticket
+discard
+get ticket
+clear
+multi
+get ticket
+decr ticket
+get ticket
+exec
+clear
+del ticket
+set ticket 6
+multi
+decr ticket
+get ticket
+exec
+clear
+del ticket
+set ticket 6
+watch ticket
+multi
+decr ricket
+decr ticket
+get ticket
+exec
+dbsize 
+flushall
+clear
+exit

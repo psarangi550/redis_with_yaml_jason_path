@@ -1,0 +1,100 @@
+keys *
+get color
+clear
+larange 0 5
+lrange color 0 3
+lrange color 0 
+lrange color 0 -1
+lpush color blue green blue
+lrange color 0 -1
+rpush color violet burgendy
+lrange color 0 -1
+lpush color rainbow
+lrange color 0 -1
+dbsize
+llen color
+mset lpush new_color blue green red lpush value 100 200 300
+dbsize
+lrange new_color 0 -1
+lrange value 0 -1
+llen color
+llen 3
+llen value
+flushall
+clear
+dbsize
+lpush value 10 20 30 40 EX 100
+lrange value 0 -1
+lpop value
+llen
+llen value
+clear
+lrange value 0 -1
+expire value 60
+persist value
+dbsize
+exists value
+del value
+dbsize
+get value
+lrange value 0 -1
+clear
+hset color blue 100
+get color
+hget color blue
+hget color
+hget color -1
+hget color 
+hset color green 200
+hget color green
+hget color green blue
+hget color green 
+hget color bluew 
+hget color blue
+clear
+hmget color blue green
+flushall
+lpush val 10 20 30
+lrange val 0 -1
+flushall
+clear
+rpush 10 20 30
+lrange 10 0 -1
+clear
+flushall
+sadd user_ip 10.0.0.1 10.0.0.2 10.0.0.3 
+expire 200 
+expire user_ip 200 
+scard user_ip
+smembers user_ip
+sismember user_ip "10.0.0.3"
+sismember user_ip 10.0.0.3
+clear
+sismember user_ip 10.0.0.4
+spop user_ip
+smembers user_ip
+sadd client_ip 10.0.0.2, 10.0.0.4,10.0.0.5
+sdiff user_ip client_ip
+sdiff  client_ip user_ip
+spop client_ip 2
+clear
+srem user_ip "10.0.0.1"
+smembers users_ip 
+smembers user_ip 
+clear
+keys *
+srem user_ip "10.0.0.2"
+smembers user_ip
+keys *
+sadd user_ip 10.0.0.2, 10.0.0.4 10.0.0.5
+srem user_ip 10.0.0.2 10.0.0.4
+smembers user_ip
+srem user_ip "10.0.0.2" "10.0.0.5"
+smembers user_ip
+spop user_ip
+clear
+keys *
+flush all
+flushall
+clear
+exit
